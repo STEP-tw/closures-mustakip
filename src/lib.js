@@ -14,14 +14,6 @@ const makeCounterFromZero = function() {
   return makeCounterFromN(0);
 }
 
-const isNumber = function(parameter){
-  let string = ""+parameter;
-  if(string == "undefined") {
-    return false;
-  }
-  return true;
-}
-
 const makeDeltaTracker = function(initialValue) {
   let old = initialValue;
   return function(delta = 0) { 
@@ -34,11 +26,11 @@ const makeDeltaTracker = function(initialValue) {
 }
 
 const makeFiboGenerator = function(firstElement,secondElement) {
-  if(!isNumber(firstElement)) {
+  if(!firstElement) {
     firstElement = 0;
     secondElement = 1;
   }
-  if(!isNumber(secondElement)) {
+  if(!secondElement) {
     secondElement = firstElement;
     firstElement = 0;
   }
@@ -55,9 +47,9 @@ const concatElements = function(arrayToConcatWith,currentElement) {
   return arrayToConcatWith.concat(currentElement);
 }
 
-const makeCycler = function(array) {
+const makeCycler = function(array) { 
   let index = 0;
-  let newArray = array.reduce(concatElements,[]);
+  let newArray = array.slice(0,array.length);
   return function() {
     if(index == newArray.length){
       index = 0;
@@ -74,7 +66,7 @@ const curry = function(func,number) {
 
 const compose = function(func1,func2) {
   return function(argument1,argument2) {
-    if(isNumber(argument2)) {
+    if(argument2) {
       return func2(func1(argument1),func1(argument2));
     }
     return func1(func2(argument1));
