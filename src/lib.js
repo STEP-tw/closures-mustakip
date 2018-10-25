@@ -43,9 +43,13 @@ const makeFiboGenerator = function(firstElement,secondElement) {
   }
 }
 
+const returnElement = function(number) {
+  return number;
+}
+
 const makeCycler = function(array) { 
   let index = 0;
-  let newArray = array.map(function(number){return number;});
+  let newArray = array.map(returnElement);
   return function() {
     return newArray[((index++) % newArray.length)];
   }
