@@ -17,21 +17,13 @@ const makeCounterFromZero = function() {
 const makeDeltaTracker = function(initialValue) {
   let old = initialValue;
   return function(delta = 0) { 
-    return {
-      old,
-      delta, 
-      new :(old = old + delta)
-    };
+    return {old, delta, new :(old = old + delta)};
   }
 }
 
-const makeFiboGenerator = function(firstElement,secondElement) {
-  if(!firstElement) {
-    firstElement = 0;
-    secondElement = 1;
-  }
+const makeFiboGenerator = function(firstElement = 0,secondElement) {
   if(!secondElement) {
-    secondElement = firstElement;
+    secondElement = firstElement || 1;
     firstElement = 0;
   }
   return function() {
@@ -63,10 +55,8 @@ const curry = function(func,number) {
 
 const compose = function(func1,func2) {
   return function(argument1,argument2) {
-    if(argument2) {
-      return func2(func1(argument1),func1(argument2));
-    }
-    return func1(func2(argument1));
+    let output = func2(argument1,argument2);
+    return func1(output);
   }
 }
 
