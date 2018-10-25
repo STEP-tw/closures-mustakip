@@ -42,7 +42,26 @@ const makeDeltaTracker = function(initialValue) {
   }
 }
 
-const makeFiboGenerator = undefined;
+const makeFiboGenerator = function(firstElement,secondElement) {
+  if(!isNumber(firstElement)) {
+    firstElement = 0;
+    secondElement = 1;
+  }
+  if(!isNumber(secondElement)) {
+    secondElement = firstElement;
+    firstElement = 0;
+  }
+  return function() {
+    let fiboNumber = firstElement;
+    let sum = firstElement + secondElement;
+    firstElement = secondElement;
+    secondElement = sum;
+    return fiboNumber;
+  }
+}
+
+
+
 const makeCycler = undefined;
 const curry = undefined;
 const compose = undefined;
