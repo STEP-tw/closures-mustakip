@@ -6,18 +6,14 @@ const makeConstant = function(input) {
 
 const makeCounterFromN = function(number) {
   return function() {
-    let returnValue = number;
-    number++;
-    return returnValue;
+   return number++;
   }
 }
 
 const makeCounterFromZero = function() {
   let number = 0;
   return function() {
-    let returnValue = number;
-    number++;
-    return returnValue;
+   return number++;
   }
 }
 
@@ -71,8 +67,7 @@ const makeCycler = function(array) {
     if(index == newArray.length){
       index = 0;
     }
-    index++;
-    return newArray[index - 1];
+    return newArray[index++];
   }
 }
 
