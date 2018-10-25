@@ -82,7 +82,14 @@ const curry = function(func,number) {
   }
 }
 
-const compose = undefined;
+const compose = function(func1,func2) {
+  return function(argument1,argument2) {
+    if(isNumber(argument2)) {
+      return func2(func1(argument1),func1(argument2));
+    }
+    return func1(func2(argument1));
+  }
+}
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
