@@ -43,18 +43,11 @@ const makeFiboGenerator = function(firstElement,secondElement) {
   }
 }
 
-const concatElements = function(arrayToConcatWith,currentElement) {
-  return arrayToConcatWith.concat(currentElement);
-}
-
 const makeCycler = function(array) { 
   let index = 0;
-  let newArray = array.slice(0,array.length);
+  let newArray = array.map(function(number){return number;});
   return function() {
-    if(index == newArray.length){
-      index = 0;
-    }
-    return newArray[index++];
+    return newArray[((index++) % newArray.length)];
   }
 }
 
