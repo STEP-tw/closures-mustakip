@@ -6,14 +6,14 @@ const makeConstant = function(input) {
 
 const makeCounterFromN = function(number) {
   return function() {
-   return number++;
+    return number++;
   }
 }
 
 const makeCounterFromZero = function() {
   let number = 0;
   return function() {
-   return number++;
+    return number++;
   }
 }
 
