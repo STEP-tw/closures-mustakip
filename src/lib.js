@@ -1,5 +1,5 @@
 const makeConstant = function(input) {
-  return function(anyArgument) {
+  return function() {
     return input;
   }
 }
