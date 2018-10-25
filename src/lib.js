@@ -23,15 +23,13 @@ const isNumber = function(parameter){
 }
 
 const makeDeltaTracker = function(initialValue) {
-  let trackedDelta = {old: 0, delta: 0, new: initialValue};
-  return function(number) { 
-    if(!isNumber(number)){
-      number = 0;
-    }
-    trackedDelta.old = trackedDelta.new;
-    trackedDelta.new = trackedDelta.old + number;
-    trackedDelta.delta = number;
-    return trackedDelta;
+  let old = initialValue;
+  return function(delta = 0) { 
+    return {
+      old,
+      delta, 
+      new :(old = old + delta)
+    };
   }
 }
 
