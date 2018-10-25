@@ -21,7 +21,27 @@ const makeCounterFromZero = function() {
   }
 }
 
-const makeDeltaTracker = undefined;
+const isNumber = function(parameter){
+  let string = ""+parameter;
+  if(string == "undefined") {
+    return false;
+  }
+  return true;
+}
+
+const makeDeltaTracker = function(initialValue) {
+  let trackedDelta = {old: 0, delta: 0, new: initialValue};
+  return function(number) { 
+    if(!isNumber(number)){
+      number = 0;
+    }
+    trackedDelta.old = trackedDelta.new;
+    trackedDelta.new = trackedDelta.old + number;
+    trackedDelta.delta = number;
+    return trackedDelta;
+  }
+}
+
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;
